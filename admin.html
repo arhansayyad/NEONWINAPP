@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NEONWIN - Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+<div class="dashboard">
+  <h1>NEONWIN ADMIN PANEL</h1>
+
+  <input type="text" id="uid" placeholder="User UID">
+  <input type="number" id="points" placeholder="Add Points">
+  <button onclick="addPoints()" class="btn">Add Points</button>
+
+  <button onclick="logout()" class="btn red">Logout</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

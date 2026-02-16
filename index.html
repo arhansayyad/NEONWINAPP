@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NEONWIN - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body class="dark">
+
+<div class="login-box">
+  <h1>NEONWIN</h1>
+
+  <button onclick="googleLogin()" class="btn google">
+    Sign in with Google
+  </button>
+
+  <div id="recaptcha-container"></div>
+
+  <input type="text" id="phone" placeholder="Enter phone number +91...">
+  <button onclick="sendOTP()" class="btn">Send OTP</button>
+
+  <input type="text" id="otp" placeholder="Enter OTP">
+  <button onclick="verifyOTP()" class="btn">Verify OTP</button>
+
+  <hr>
+
+  <h3>Admin Login</h3>
+  <input type="text" id="adminUser" placeholder="Username">
+  <input type="password" id="adminPass" placeholder="Password">
+  <button onclick="adminLogin()" class="btn red">Login as Admin</button>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
