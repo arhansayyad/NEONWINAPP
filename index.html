@@ -1,38 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>NEONWIN - Login</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEONWIN — Login / Signup</title>
+
+  <!-- Firebase v8 compat scripts (required) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="dark">
+<body class="page-bg">
 
-<div class="login-box">
-  <h1>NEONWIN</h1>
+  <main class="center-card">
+    <h1 class="neon-title">NEONWIN</h1>
+    <p class="muted">Color Prediction — Demo Mode</p>
 
-  <button onclick="googleLogin()" class="btn google">
-    Sign in with Google
-  </button>
+    <!-- Auth options -->
+    <div id="entrySection" class="block">
+      <button id="btnGoogle" class="btn neon">Sign up / Sign in with Google</button>
+      <button id="btnPhone" class="btn teal">Sign up with Phone (OTP)</button>
+      <p class="muted small">or use Email login below</p>
+    </div>
 
-  <div id="recaptcha-container"></div>
+    <!-- Phone section -->
+    <div id="phoneSection" class="hidden block">
+      <input id="phoneInput" placeholder="+91XXXXXXXXXX" class="input" />
+      <div id="recaptcha-container"></div>
+      <div class="row">
+        <button id="btnSendOtp" class="btn">Send OTP</button>
+        <button id="btnCancelPhone" class="btn danger">Cancel</button>
+      </div>
 
-  <input type="text" id="phone" placeholder="Enter phone number +91...">
-  <button onclick="sendOTP()" class="btn">Send OTP</button>
+      <input id="otpInput" placeholder="Enter OTP" class="input" />
+      <div class="row">
+        <button id="btnVerifyOtp" class="btn neon">Verify & Continue</button>
+      </div>
+    </div>
 
-  <input type="text" id="otp" placeholder="Enter OTP">
-  <button onclick="verifyOTP()" class="btn">Verify OTP</button>
+    <!-- After provider sign-in: create account extra info -->
+    <div id="extraSection" class="hidden block">
+      <p class="muted">Create your in-game identity</p>
+      <input id="emailForLink" placeholder="Your email (for login)" class="input" />
+      <input id="usernameForLink" placeholder="Choose a username" class="input" />
+      <input id="passwordForLink" placeholder="Create a password" type="password" class="input" />
+      <div class="row">
+        <button id="btnCompleteSignup" class="btn neon">Create Account</button>
+      </div>
+    </div>
 
-  <hr>
+    <!-- Email login (Already have an account?) -->
+    <div id="emailLoginSection" class="block">
+      <p class="muted">Already have an account? Login with Email</p>
+      <input id="loginEmail" placeholder="Email" class="input" />
+      <input id="loginPassword" placeholder="Password" type="password" class="input" />
+      <div class="row">
+        <button id="btnEmailLogin" class="btn teal">Login</button>
+        <button id="btnShowSignup" class="btn" title="Sign up flow">Need to sign up?</button>
+      </div>
+    </div>
 
-  <h3>Admin Login</h3>
-  <input type="text" id="adminUser" placeholder="Username">
-  <input type="password" id="adminPass" placeholder="Password">
-  <button onclick="adminLogin()" class="btn red">Login as Admin</button>
+    <div style="height:12px"></div>
 
-</div>
+    <small class="muted">NEONWIN — demo. No real money.</small>
+  </main>
 
-<script src="app.js"></script>
+  <!-- popup / modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <div id="modalText" class="modal-text"></div>
+      <div class="row">
+        <button id="modalOk" class="btn neon">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

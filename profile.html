@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEONWIN — Profile</title>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-bg">
+
+  <header class="topbar">
+    <div class="brand">NEONWIN</div>
+    <div class="top-actions">
+      <button onclick="goDashboard()" class="small-btn">Dashboard</button>
+      <button onclick="logout()" class="small-btn danger">Logout</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card profile-card">
+      <img id="pf-pic" class="avatar" src="" alt="profile" />
+      <h2 id="pf-username">Username</h2>
+      <p id="pf-email" class="muted">email</p>
+
+      <div class="profile-stats">
+        <div><strong id="pf-coins">0</strong><div class="muted small">Coins</div></div>
+        <div><strong id="pf-games">0</strong><div class="muted small">Total Games</div></div>
+        <div><strong id="pf-wins">0</strong><div class="muted small">Wins</div></div>
+      </div>
+
+      <div class="card">
+        <h3>Support & Contact</h3>
+        <div class="support-grid">
+          <a class="support" href="https://discord.gg/YOUR_DISCORD" target="_blank">Discord</a>
+          <a class="support" href="https://t.me/YOUR_TELEGRAM" target="_blank">Telegram</a>
+          <a class="support" href="https://wa.me/YOURWHATSAPPNUMBER" target="_blank">WhatsApp</a>
+          <a class="support" href="https://www.instagram.com/YOUR_INSTA" target="_blank">Instagram</a>
+          <a class="support" href="mailto:youremail@example.com">Email</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <button class="btn neon" onclick="requestDeposit()">Request Demo Deposit</button>
+      </div>
+
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <div id="modalText" class="modal-text"></div>
+      <div class="row">
+        <button id="modalOk" class="btn neon">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

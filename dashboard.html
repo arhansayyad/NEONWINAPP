@@ -1,22 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>NEONWIN - Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEONWIN — Dashboard</title>
+
+  <!-- Firebase v8 compat -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="dark">
+<body class="page-bg">
 
-<div class="dashboard">
-  <h1>Welcome to NEONWIN</h1>
-  <h2 id="userName"></h2>
-  <h3>Wallet: ₹<span id="wallet">0</span></h3>
+  <header class="topbar">
+    <div class="brand">NEONWIN</div>
+    <div class="top-actions">
+      <button onclick="goProfile()" class="small-btn">Profile</button>
+      <button onclick="requestDeposit()" class="small-btn">Request Deposit</button>
+      <button onclick="logout()" class="small-btn danger">Logout</button>
+    </div>
+  </header>
 
-  <button onclick="logout()" class="btn red">Logout</button>
-</div>
+  <main class="container">
+    <section class="card">
+      <div class="row-spread">
+        <div>
+          <h3 id="displayName">Player</h3>
+          <p class="muted">Welcome to the demo playground</p>
+        </div>
+        <div class="balance-box">
+          <div class="muted">Coins</div>
+          <div id="coins" class="coins">0</div>
+        </div>
+      </div>
+    </section>
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="app.js"></script>
+    <section class="card">
+      <h3>Colour Trading — Demo Round</h3>
+
+      <div class="timer-row">
+        <div id="timerDisplay" class="timer">01:00</div>
+        <div class="muted">Round timer</div>
+      </div>
+
+      <div class="colors-grid">
+        <button class="color red" onclick="selectColor('red')">Red</button>
+        <button class="color green" onclick="selectColor('green')">Green</button>
+        <button class="color violet" onclick="selectColor('violet')">Violet</button>
+      </div>
+
+      <input id="betInput" class="input" type="number" min="1" placeholder="Enter bet (coins)" />
+      <div class="row">
+        <button id="placeBtn" class="btn neon" onclick="placeBet()">Place Bet</button>
+        <button class="btn" onclick="autoRandom()">Random</button>
+      </div>
+      <p class="muted small">Chance to win: 1 in 10 (demo). Winning multiplies bet by 5.</p>
+    </section>
+
+    <section class="card">
+      <h3>History (recent)</h3>
+      <ul id="historyList" class="history"></ul>
+    </section>
+  </main>
+
+  <!-- modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <div id="modalText" class="modal-text"></div>
+      <div class="row">
+        <button id="modalOk" class="btn neon">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
