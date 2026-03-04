@@ -1,3 +1,12 @@
+// === Debug helpers (temporary) ===
+alert("app.js loaded");                    // shows that the file actually loaded
+console.log("NEONWIN app.js loaded");      // for remote debugging
+window.onerror = function(msg, src, line, col, err) {
+  const text = "JS error: " + msg + " at line " + line + (err && err.stack ? ("\n"+err.stack) : "");
+  try { alert(text); } catch(e) { console.log(text); }
+  return false; // let the error also show in console
+};
+// === end debug helpers ===
 /* app.js — NEONWIN (Firebase v8 compat)
    Full client logic: auth (Google + Phone + Email), profile, dashboard, play logic (1-in-10),
    deposits (demo), history, UI helpers, and defensive error handling.
