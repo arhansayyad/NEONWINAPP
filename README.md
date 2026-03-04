@@ -1,2 +1,0 @@
-# NEONWINAPP
-Verified earning app
